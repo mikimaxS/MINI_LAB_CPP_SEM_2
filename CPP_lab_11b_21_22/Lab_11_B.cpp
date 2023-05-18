@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
 	cout << "--------------------------------ETAP 1--------------------------------" << endl;
-	//Lista int-ï¿½w
+	//Lista int-ów
 	cout << "---Lista int-ow---" << endl;
 	linkedList<int> lista_0;
 	try
@@ -44,7 +44,7 @@ int main()
 		cout << s << endl;
 	}
 
-	//Lista string-ï¿½w
+	//Lista string-ów
 	cout << endl;
 	cout << "---Lista string-ow---" << endl;
 	linkedList<string> lista_1;
@@ -136,7 +136,7 @@ int main()
 	}
 	cout << endl << endl;
 	*/
-	
+
 	cout << "--------------------------------ETAP 3--------------------------------" << endl;
 	/*
 	cout << "Predykat" << endl;
