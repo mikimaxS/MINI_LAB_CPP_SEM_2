@@ -95,7 +95,7 @@ int main()
 	cout << lista_2 << endl << endl;
 
 	cout << "--------------------------------ETAP 2--------------------------------" << endl;
-	/*
+	
 	cout << "---Operacje za pomoca iteratorow---" << endl << endl;
 	linkedList<int>::listIterator it_i = lista_0.begin();
 	cout << "Pierwszy element listy in-ow: " << *it_i << endl;
@@ -135,7 +135,7 @@ int main()
 		it_s2--;
 	}
 	cout << endl << endl;
-	*/
+	
 
 	cout << "--------------------------------ETAP 3--------------------------------" << endl;
 	/*
