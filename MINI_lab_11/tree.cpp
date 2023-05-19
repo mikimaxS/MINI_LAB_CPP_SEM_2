@@ -90,140 +90,54 @@ void Tree::removeLeaf(Node* n)
 		delete n;
 		this->root = nullptr;
 	}
-
 	else
 	{
-		Node* tmp = n;
-		while (tmp->parent != nullptr)
+		if (n->leftChild != nullptr || n->rightChild != nullptr)
 		{
-			tmp = tmp->parent;
-		}
-
-		if (tmp == this->root)
-		{
-			if (n->leftChild != nullptr || n->rightChild != nullptr)
-			{
-				//is not a leaf
-				throw NotALeafException(n);
-			}
-			else
-			{
-				if (n->parent != nullptr && n->parent->leftChild == n)
-				{
-					n->parent->leftChild = nullptr;
-					--this->count;
-					delete n;
-				}
-				else if (n->parent != nullptr)
-				{
-					//is rightchild
-					n->parent->rightChild = nullptr;
-					--this->count;
-					delete n;
-				}
-			}
+			//is not a leaf
+			throw NotALeafException(n);
 		}
 		else
 		{
-			//is not in this tree
-			throw TreeException("not_in_this_tree");
+			if (n->parent != nullptr && n->parent->leftChild == n)
+			{
+				n->parent->leftChild = nullptr;
+				--this->count;
+				delete n;
+			}
+			else if (n->parent != nullptr)
+			{
+				//is rightchild
+				n->parent->rightChild = nullptr;
+				--this->count;
+				delete n;
+			}
 		}
 	}
 }
 
-//void Tree::removeNode(Node* n)
-//{
-//	if (n == nullptr)
-//	{
-//		throw TreeException("Wezel nie istnieje");
-//	}
-//
-//	if (this->root == n)
-//	{
-//		delete n;
-//		this->root = nullptr;
-//	}
-//	else
-//	{
-//		Node* tmp = n;
-//		while (tmp->parent != nullptr)
-//		{
-//			tmp = tmp->parent;
-//		}
-//
-//		if (tmp == this->root)
-//		{
-//			if (n->rightChild != nullptr)
-//			{
-//				Node* l_child = n->leftChild;
-//				Node* r_child = n->rightChild;
-//
-//				if (n->parent != nullptr)
-//				{
-//					if (n->parent->leftChild == n)
-//					{
-//						n->parent->leftChild = nullptr;
-//						delete n;
-//					}
-//					else 
-//					{
-//						//is rightchild
-//						n->parent->rightChild = nullptr;
-//						delete n;
-//					}
-//				}
-//
-//				removeNode(l_child);
-//				removeNode(r_child);
-//			}
-//			else if (n->leftChild != nullptr)
-//			{
-//				Node* l_child = n->leftChild;
-//
-//				if (n->parent != nullptr)
-//				{
-//					if (n->parent->leftChild == n)
-//					{
-//						n->parent->leftChild = nullptr;
-//						delete n;
-//					}
-//					else
-//					{
-//						//is rightchild
-//						n->parent->rightChild = nullptr;
-//						delete n;
-//					}
-//				}
-//
-//				removeNode(l_child);
-//			}
-//			else
-//			{
-//				if (n->parent != nullptr)
-//				{
-//					if (n->parent->leftChild == n)
-//					{
-//						n->parent->leftChild = nullptr;
-//						delete n;
-//					}
-//					else 
-//					{
-//						//is rightchild
-//						n->parent->rightChild = nullptr;
-//						delete n;
-//					}
-//				}
-//
-//				return;
-//			}
-//		}
-//		else
-//		{
-//			//is not in this tree
-//			throw TreeException("not_in_this_tree");
-//		}
-//	}
-//}
+void Tree::removeNode(Node* n)
+{
+	if (n == nullptr)
+	{
+		throw TreeException("Wezel nie istnieje");
+		return;
+	}
+
+	if (this->root == n)
+	{
+		delete n;
+		this->root = nullptr;
+		--count;
+	}
+	else
+	{
+		if (n->leftChild) removeNode(n->leftChild);
+		if (n->rightChild) removeNode(n->rightChild);
+		removeLeaf(n);
+
+	}
+}
 
 void Tree::clear()
 {
@@ -245,36 +159,36 @@ void Tree::clear()
 	}
 }
 
-void Tree::removeNode(Node* n)
-{
-	if (n == nullptr)
-	{
-		throw TreeException("Wezel nie istnieje");
-	}
-
-	if (this->root == nullptr)
-	{
-		return;
-	}
-
-	if (this->root == n)
-	{
-		this->count = 0;
-		delete n;
-		this->root = nullptr;
-	}
-
-	if (n->parent->leftChild == n) {
-		--this->count;
-		n->parent->leftChild = nullptr;
-	}
-	if (n->parent->rightChild == n) {
-		--this->count;
-		n->parent->rightChild = nullptr;
-	}
-
-	removeNode(n->leftChild);
-	removeNode(n->rightChild);
-
-	delete n;
-}
+//void Tree::removeNode(Node* n)
+//{
+//	if (n == nullptr)
+//	{
+//		throw TreeException("Wezel nie istnieje");
+//	}
+//
+//	if (this->root == nullptr)
+//	{
+//		return;
+//	}
+//
+//	if (this->root == n)
+//	{
+//		this->count = 0;
+//		delete n;
+//		this->root = nullptr;
+//	}
+//
+//	if (n->parent->leftChild == n) {
+//		--this->count;
+//		n->parent->leftChild = nullptr;
+//	}
+//	if (n->parent->rightChild == n) {
+//		--this->count;
+//		n->parent->rightChild = nullptr;
+//	}
+//
+//	removeNode(n->leftChild);
+//	removeNode(n->rightChild);
+//
+//	delete n;
+//}
