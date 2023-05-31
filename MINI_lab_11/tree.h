@@ -8,9 +8,9 @@ class Node
 {
 	friend Tree;
 	int* data;
-	Node* leftChild = nullptr;
-	Node* rightChild = nullptr;
-	Node* parent = nullptr;
+	Node* leftChild=nullptr;
+	Node* rightChild=nullptr;
+	Node* parent=nullptr;
 public:
 	Node(int* data) : data{ data } { }
 	int* getData() { return data; }
@@ -24,7 +24,7 @@ public:
 
 public:
 	Tree() : root{ nullptr }, count{ 0 } { };
-	~Tree() { clear(); };
+	//~Tree() { clear(); };
 	bool isEmpty() const { return !root; };
 	unsigned size() const { return count; };
 	int* getRoot() const;
@@ -43,4 +43,3 @@ public:
 	void removeExampleTree();
 	Node* getRootNode() { return root; }
 };
-

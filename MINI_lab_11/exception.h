@@ -1,21 +1,17 @@
 #pragma once
 #include <iostream>
 #include "tree.h"
-#include <string>
-
 
 class TreeException
 {
-	std::string err_msg;
-
+	const std::string what;
 public:
-	TreeException(std::string s) : err_msg(s) {}
+	TreeException(const std::string w) : what(w) {}
 
-	virtual std::string info() const
+	const std::string info() const
 	{
-		std::cout << err_msg << std::endl;
-
-		return err_msg;
+		std::cout << this->what << std::endl;
+		return this->what;
 	}
 };
 
@@ -23,9 +19,11 @@ public:
 class NotALeafException : public TreeException
 {
 	Node* ptr;
-
 public:
-	NotALeafException(Node* p) : ptr(p),
-		TreeException("Wezel zawierajacy : " + std::to_string(*p->getData()) + " nie jest lisciem") {}
+	NotALeafException(Node* n) :ptr(n), TreeException("") {}
 
+	void info() const
+	{
+		std::cout << "Wezel zawierajacy: " << *this->ptr->getData() << " nie jest lisciem" << std::endl;
+	}
 };

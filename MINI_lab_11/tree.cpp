@@ -12,131 +12,119 @@ void Tree::showExampleTree()
 
 void Tree::removeExampleTree()
 {
-	if (root != nullptr)
-	{
-		removeNode(root->leftChild);
-		removeNode(root->rightChild);
-	}
+	removeNode(root->leftChild);
+	removeNode(root->rightChild);
 }
 
 //todo
 
 int* Tree::getRoot() const
 {
-	if (this->root == nullptr)
-	{
-		throw "Puste drzewo - brak korzenia";
-	}
-	else
-	{
+	if (this->root)
 		return this->root->data;
-	}
+	else
+		throw "Puste drzewo - brak korzenia";
 }
 
 bool Tree::add(int* data)
 {
-	if (this->root == nullptr)
+	if (data != nullptr)
 	{
-		this->root = new Node(data);
-		++this->count;
-		return true;
-	}
-	else
-	{
-		Node* tmp = this->root;
+		Node* N = new Node(data);
+		if (!N) return false;
 
-		while (tmp != nullptr)
+		if (this->root == nullptr)
 		{
-			if (*tmp->data > *data)
-			{
-				if (tmp->leftChild == nullptr)
-				{
-					tmp->leftChild = new Node(data);
-					tmp->leftChild->parent = tmp;
-					++this->count;
-					return true;
-				}
+			this->root = N;
+			++this->count;
+			return true;
+		}
+		else
+		{
+			Node* tmp = this->root;
 
-				tmp = tmp->leftChild;
-			}
-			else if (*tmp->data <= *data)
+			while (true)
 			{
-				if (tmp->rightChild == nullptr)
+				if (*data <= *tmp->data)
 				{
-					tmp->rightChild = new Node(data);
-					tmp->rightChild->parent = tmp;
-					++this->count;
-					return true;
+					if (tmp->leftChild == nullptr)
+					{
+						tmp->leftChild = N;
+						tmp->leftChild->parent = tmp;
+						++this->count;
+						return true;
+					}
+					else
+					{
+						tmp = tmp->leftChild;
+					}
 				}
-
-				tmp = tmp->rightChild;
+				else
+				{
+					if (tmp->rightChild == nullptr)
+					{
+						tmp->rightChild = N;
+						tmp->rightChild->parent = tmp;
+						++this->count;
+						return true;
+					}
+					else
+					{
+						tmp = tmp->rightChild;
+					}
+				}
 			}
 		}
 	}
-
-	return false;
 }
 
 void Tree::removeLeaf(Node* n)
 {
-	if (n == nullptr)
-	{
-		throw TreeException("Wezel nie istnieje");
-	}
+	if (n == nullptr) throw TreeException("Wezel nie istnieje");
 
-	if (n == this->root)
+	if (!n->leftChild && !n->rightChild)
 	{
-		this->count = 0;
-		delete n;
-		this->root = nullptr;
+		if (n == this->root)	//is a root
+		{
+			delete n->data;
+			delete n;
+			this->count = 0;
+			this->root = nullptr;
+		}
+		else if (n->parent->leftChild == n)	//is left child
+		{
+			n->parent->leftChild = nullptr;
+			delete n->data;
+			delete n;
+			--this->count;
+		}
+		else	//is right child
+		{
+			n->parent->rightChild = nullptr;
+			delete n->data;
+			delete n;
+			--this->count;
+		}
 	}
 	else
 	{
-		if (n->leftChild != nullptr || n->rightChild != nullptr)
-		{
-			//is not a leaf
-			throw NotALeafException(n);
-		}
-		else
-		{
-			if (n->parent != nullptr && n->parent->leftChild == n)
-			{
-				n->parent->leftChild = nullptr;
-				--this->count;
-				delete n;
-			}
-			else if (n->parent != nullptr)
-			{
-				//is rightchild
-				n->parent->rightChild = nullptr;
-				--this->count;
-				delete n;
-			}
-		}
+		throw NotALeafException(n);
 	}
 }
 
 void Tree::removeNode(Node* n)
 {
-	if (n == nullptr)
-	{
-		throw TreeException("Wezel nie istnieje");
-		return;
-	}
+	if (n == nullptr) throw TreeException("Wezel nie istnieje");
 
-	if (this->root == n)
-	{
-		delete n;
-		this->root = nullptr;
-		--count;
+	if (n->leftChild) {
+		removeNode(n->leftChild);
+		n->leftChild = nullptr;
 	}
-	else
-	{
-		if (n->leftChild) removeNode(n->leftChild);
-		if (n->rightChild) removeNode(n->rightChild);
-		removeLeaf(n);
-
+	if (n->rightChild) {
+		removeNode(n->rightChild);
+		n->rightChild = nullptr;
 	}
+	removeLeaf(n);
 }
 
 void Tree::clear()
@@ -145,50 +133,20 @@ void Tree::clear()
 	{
 		removeNode(this->root);
 	}
-	catch (NotALeafException& e)
+	catch (const TreeException& e)
 	{
 		e.info();
 	}
-	catch (TreeException& e)
+	catch (const NotALeafException& e)
 	{
 		e.info();
+	}
+	catch (const std::string& e)
+	{
+		std::cout << e;
 	}
 	catch (...)
 	{
 		std::cout << "err unaccounted for";
 	}
 }
-
-//void Tree::removeNode(Node* n)
-//{
-//	if (n == nullptr)
-//	{
-//		throw TreeException("Wezel nie istnieje");
-//	}
-//
-//	if (this->root == nullptr)
-//	{
-//		return;
-//	}
-//
-//	if (this->root == n)
-//	{
-//		this->count = 0;
-//		delete n;
-//		this->root = nullptr;
-//	}
-//
-//	if (n->parent->leftChild == n) {
-//		--this->count;
-//		n->parent->leftChild = nullptr;
-//	}
-//	if (n->parent->rightChild == n) {
-//		--this->count;
-//		n->parent->rightChild = nullptr;
-//	}
-//
-//	removeNode(n->leftChild);
-//	removeNode(n->rightChild);
-//
-//	delete n;
-//}

@@ -48,7 +48,7 @@ int main()
 	drzewo_0.showExampleTree();
 	
 	cout << "--------------------------------ETAP 2--------------------------------" << endl;
-	 
+	
 	cout << "---Wyjatki---" << endl;
 	try 
 	{
@@ -77,7 +77,7 @@ int main()
 	}
 	try
 	{
-		//drzewo_0.removeLeaf(drzewo_0.getRootNode());
+		//drzewo_0.removeLeaf(drzewo_0.getRootNode());	//niggaaggagagaga
 	}
 	catch (const NotALeafException& e)
 	{
