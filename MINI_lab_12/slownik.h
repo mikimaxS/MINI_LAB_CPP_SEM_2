@@ -27,5 +27,7 @@ public:
 	bool zapisz_slowka() const;
 	
 	friend ostream& operator<<(ostream& out, const slownik& S);
+
+
 };
 

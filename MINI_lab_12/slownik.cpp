@@ -1,136 +1,141 @@
 #include <iomanip>
-#include <fstream>
 using namespace std;
 #include "slownik.h"
 #include "slowko.h"
 #include "kryteria.h"
-#include <algorithm>
 
+#include <algorithm>
+#include <fstream>
 
 //------------------------------------------------------
 slownik::slownik(initializer_list<slowko> init)
 {
-	/*for (auto it = init.begin(); it != init.end(); ++it)
-	{
-		S.insert(*it);
-	}*/
-	for (slowko s : init)
-	{
-		S.insert(s);
-	}
+    for (auto it: init)
+    {
+        this->S.insert(it);
+    }
 }
+
 //------------------------------------------------------
 bool slownik::slowka_zpliku(string nazwa_pliku)
 {
-	//ifstream in("Users\Miki\source\repos\MINI_LABY_12\MINI_LABY_12\slowka_dnia.txt");
-	ifstream in(nazwa_pliku);
-	if (!in)
-	{
-		return false;
-	}
+    string ang, pol;
+    ifstream in(nazwa_pliku);
 
-	while (!in.eof())
-	{
-		slowko a;
-		in >> a;
-		S.insert(a);
-	}
+    if (!in) { return false; }
 
-	in.close();
-	return true;
+    while (!in.eof())
+    {
+        in >> ang >> pol;
+        this->S.insert(slowko(ang, pol));
+    }
+
+    in.close();
+    return true;
 }
+
 //------------------------------------------------------
 void slownik::sortowanie(Cmp::sortuj jak)
 {
-	if (this->S.value_comp().getKryterium() == jak)
-		return;
+    if (this->S.value_comp().getKryterium() == jak)
+        return;
 
-	set<slowko, Cmp> S2 {Cmp(jak)};
+    set<slowko, Cmp> S2{Cmp{jak}};
 
-	for (auto s : this->S)
-	{
-		S2.insert(s);
-	}
+    for (auto it: this->S)
+    {
+        S2.insert(it);
+    }
 
-	this->S = S2;
+    this->S = S2;
 }
+
 //------------------------------------------------------
 void slownik::wstaw()
 {
-	slowko s;
-	cin >> s;
+    slowko tmp;
 
-	this->S.insert(s);
+    cin >> tmp;
+    this->S.insert(tmp);
 }
+
 //------------------------------------------------------
 bool slownik::znajdz_slowko(slowko s) const
 {
-	auto search = slownik::S.find(s);
-	if (search == slownik::S.end())
-		return false;
-	else
-		return true;
+    if (this->S.find(s) == this->S.end()) // incorrect translation
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
+
 //------------------------------------------------------
 void slownik::test() const
 {
-	int r = rand() % this->S.size();
+    int random = rand() % this->S.size() + 1;
 
-	auto it = this->S.begin();
-	advance(it, r);
+    auto it = this->S.begin();
+    advance(it, random);
 
-	cout << r << " " << it->pol << endl;
-	string tmp;
-	cin >> tmp;
-	slowko s(tmp, it->pol);
-	if (znajdz_slowko(s))
-	{
-		cout << "________ nice bby!" << endl;
-	}
-	else
-	{
-		cout << "________ you're a failure and you shell forever live reminded of your failure!" << endl;
-	}
+    std::cout << random << " " << it->pol << std::endl;
+
+    string s_ang;
+    cin >> s_ang;
+
+    slowko s(s_ang, it->pol);
+    if (znajdz_slowko(s))
+    {   // correct translation
+        std::cout << "job well done!" << std::endl;
+    }
+    else
+    {
+        std::cout << "you're a failure and you shall live forever reminded of it" << std::endl;
+    }
 }
+
 //------------------------------------------------------
 bool slownik::zapisz_slowka() const
 {
-	cout << "the name of the file you want to save:\n";
-	string tmp;
-	cin >> tmp;
-	ofstream output(tmp + ".txt");
+    std::cout << "save: ";
+    string s;
+    std::cin >> s;
 
-	if(!output)	{ return false;	}
+    if (ifstream(s + ".txt"))
+    {
+        std::cout << "file not saved... file alerady exists" << std::endl;
+        return false;
+    }
 
-	for (slowko s : this->S)
-	{
-		output << s;
-	}
-	//for(set<slowko>::iterator it = this->S.begin(); it != this->S.end(); it++)
+    ofstream output(s + ".txt");
+    if (!output) return false;
 
-	output.close();
-	return true;
+    for (auto it: this->S)
+    {
+        output << it;
+    }
+
+    output.close();
+    return true;
 }
+
 //------------------------------------------------------
 ostream& operator<<(ostream& out, const slownik& S)
 {
-	auto print = [&out, i = 1](slowko s) mutable { out << s; };	//mutable changes from default const to non const
-	for_each(S.S.begin(), S.S.end(), print);
+    //zastosuj for_each  z lambd¹
+    //uzupe³nij
+    for_each(S.S.begin(), S.S.end(), [&out, i = 1](slowko tmp) mutable
+    {
+        out << i << ": " << tmp;
+        ++i;
+    });
 
-	//cwiczenia dodatkowe
-
-	//cw1: zwykly for "na iteratorze"
-	/*for (auto it = S.S.begin(); it != S.S.end(); ++it)
-	{
-		print(*it);
-	}*/
-
-	//cw2: zastosuj for "zakresowe" zamiast for
-	/*for (auto s : S.S)
-	{
-		print(s);
-	}*/
-
-	return out;
+    return out;
+    //cwiczenia dodatkowe
+    //cw1: zwyk³y for "na iteratorze"
+    //cw2: zastosuj for "zakresowe" zamiast for
 }
+
 //------------------------------------------------------
