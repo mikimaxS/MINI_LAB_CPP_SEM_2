@@ -1,0 +1,10 @@
+Jan Pulewski 7 3  8    5  6 10  6  3  9
+Tadeusz Arkizot 2  2  4  7  4  3  1  2  5  7 
+Ewelina Arioleta  10 6  7  7  8  6 10  7
+Emilia Magnucka 7  7  8  9  6 10 10 10  8  9
+Zofia Torres 3  5  3  6  7  2  3  4  2  1
+Jolanta Molenda 4  7 10 3 6
+Adam Kowalski  10 10 11 8 10 10 10 10 10  10
+Adam Drugi
+Wojciech Trzeci 3 10 15
+Adam Ten 10 12 12   8 10 10
