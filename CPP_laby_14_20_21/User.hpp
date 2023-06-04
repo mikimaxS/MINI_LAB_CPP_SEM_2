@@ -19,7 +19,6 @@ public:
 
 	friend std::ostream& operator << (std::ostream& out, const User& user);
 
-
 	void Print(std::ostream& out, bool printMovies) const;
 
 
@@ -30,7 +29,7 @@ public:
 
 
 //	// Etap 4
-//	void RateLastMovie(int rating);
+	void RateLastMovie(int rating);
 
 
 //	// Etap 5

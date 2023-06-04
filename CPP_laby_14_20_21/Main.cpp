@@ -166,79 +166,79 @@ int main()
 
 
 
-//	std::cout << '\n' << "==================== Etap 4 ====================" << '\n';
-//
-//	user3->RateLastMovie(5);
-//	user4->RateLastMovie(-1);
-//
-//
-//	user5->WatchMovie(*moviesByCategories.at("Drama")[0]);
-//	user5->RateLastMovie(3);
-//
-//	user5->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
-//	user5->RateLastMovie(-1);
-//		
-//	user5->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
-//	user5->RateLastMovie(4);
-//
-//	user5->WatchMovie(*moviesByCategories.at("Drama")[0]);
-//	user5->RateLastMovie(-1);
-//	
-//	user5->WatchMovie(*moviesByCategories.at("Comedy")[1]);
-//	user5->RateLastMovie(5);
-//
-//	user5->WatchMovie(*moviesByCategories.at("Comedy")[3]);
-//
-//	
-//	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[3]);
-//
-//	user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
-//	user1->RateLastMovie(4);
-//
-//	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
-//	user1->RateLastMovie(3);
-//
-//	user1->WatchMovie(*moviesByCategories.at("Fantasy")[2]);
-//	user1->RateLastMovie(2);
-//
-//	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
-//	user1->RateLastMovie(4);
-//	
-//	user1->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
-//	user1->RateLastMovie(1);
-//
-//	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[3]);
-//	user1->RateLastMovie(5);
-//
-//	user1->WatchMovie(*moviesByCategories.at("Comedy")[1]);
-//	user1->RateLastMovie(5);
-//	
-//
-//	user3->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
-//	user3->RateLastMovie(4);
-//
-//	user3->WatchMovie(*moviesByCategories.at("Fantasy")[3]);
-//	user3->WatchMovie(*moviesByCategories.at("Comedy")[1]);
-//	user3->RateLastMovie(3);
-//
-//	user3->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
-//	user3->RateLastMovie(4);
-//	
-//	user3->WatchMovie(*moviesByCategories.at("Fantasy")[2]);
-//	
-//	user3->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
-//	user3->RateLastMovie(3);
-//
-//	user3->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
-//	
-//
-//	std::cout << '\n';
-//	std::cout << "All users:" << '\n';
-//	streamingPlatform.PrintUsers(std::cout);
-//
-//	std::cout << '\n';
-//	std::cout << "All movies:" << '\n';
-//	streamingPlatform.PrintMovies(std::cout);
+	std::cout << '\n' << "==================== Etap 4 ====================" << '\n';
+
+	user3->RateLastMovie(5);
+	user4->RateLastMovie(-1);
+
+
+	user5->WatchMovie(*moviesByCategories.at("Drama")[0]);
+	user5->RateLastMovie(3);
+
+	user5->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
+	user5->RateLastMovie(-1);
+
+	user5->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
+	user5->RateLastMovie(4);
+
+	user5->WatchMovie(*moviesByCategories.at("Drama")[0]);
+	user5->RateLastMovie(-1);
+
+	user5->WatchMovie(*moviesByCategories.at("Comedy")[1]);
+	user5->RateLastMovie(5);
+
+	user5->WatchMovie(*moviesByCategories.at("Comedy")[3]);
+
+
+	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[3]);
+
+	user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
+	user1->RateLastMovie(4);
+
+	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
+	user1->RateLastMovie(3);
+
+	user1->WatchMovie(*moviesByCategories.at("Fantasy")[2]);
+	user1->RateLastMovie(2);
+
+	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
+	user1->RateLastMovie(4);
+
+	user1->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
+	user1->RateLastMovie(1);
+
+	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[3]);
+	user1->RateLastMovie(5);
+
+	user1->WatchMovie(*moviesByCategories.at("Comedy")[1]);
+	user1->RateLastMovie(5);
+
+
+	user3->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
+	user3->RateLastMovie(4);
+
+	user3->WatchMovie(*moviesByCategories.at("Fantasy")[3]);
+	user3->WatchMovie(*moviesByCategories.at("Comedy")[1]);
+	user3->RateLastMovie(3);
+
+	user3->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
+	user3->RateLastMovie(4);
+
+	user3->WatchMovie(*moviesByCategories.at("Fantasy")[2]);
+
+	user3->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
+	user3->RateLastMovie(3);
+
+	user3->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
+
+
+	std::cout << '\n';
+	std::cout << "All users:" << '\n';
+	streamingPlatform.PrintUsers(std::cout);
+
+	std::cout << '\n';
+	std::cout << "All movies:" << '\n';
+	streamingPlatform.PrintMovies(std::cout);
 
 
 
