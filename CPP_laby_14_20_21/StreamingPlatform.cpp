@@ -6,7 +6,12 @@
 
 void StreamingPlatform::ProcessLogin(std::string& login)
 {
-    // Etap 3: Uzupe�nij
+    std::replace_if(login.begin(), login.end(), [](const char& c){
+        if('0' <= c && c <= '9' ||'a' <= c && c <= 'z' ||'A' <= c && c <= 'Z'){
+            return false;
+        }
+        return true;
+    }, '_');
 }
 
 User *StreamingPlatform::AddUser(std::string login, std::string firstName, std::string lastName)

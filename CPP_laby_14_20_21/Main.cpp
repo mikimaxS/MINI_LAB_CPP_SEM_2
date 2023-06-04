@@ -115,53 +115,53 @@ int main()
 
 
 
-//	std::cout << '\n' << "==================== Etap 3 ====================" << '\n';
-//
-//	auto user1 = streamingPlatform.AddUser("%U?s*e(r 1", "John", "Smith");
-//	CheckAddUser(user1);
-//
-//	auto user2 = streamingPlatform.AddUser("_U_s_e_r_1", "Jane", "Doe");
-//	CheckAddUser(user2);
-//
-//	auto user3 = streamingPlatform.AddUser("Use^r3", "Aliza", "Forster");
-//	CheckAddUser(user3);
-//
-//	auto user4 = streamingPlatform.AddUser("Us}er4", "Tayler", "Bernard");
-//	CheckAddUser(user4);
-//
-//	auto user5 = streamingPlatform.AddUser("User+5", "Filip", "Finch");
-//	CheckAddUser(user5);
-//
-//	
-//	user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
-//	user1->WatchMovie(*moviesByCategories.at("Comedy")[0]);
-//	user1->WatchMovie(*moviesByCategories.at("Drama")[3]);
-//	user1->WatchMovie(*moviesByCategories.at("Drama")[2]);
-//	user1->WatchMovie(*moviesByCategories.at("Comedy")[3]);
-//	user1->WatchMovie(*moviesByCategories.at("Drama")[1]);
-//	user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
-//	user1->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
-//
-//	
-//	std::cout << '\n';
-//	std::cout << "All users:" << '\n';
-//	streamingPlatform.PrintUsers(std::cout);
-//
-//	const auto user1WatchedMovies = user1->GetWatchedMovies();
-//
-//	user1->ClearHistory();
-//
-//	std::cout << '\n';
-//	std::cout << "All users:" << '\n';
-//	streamingPlatform.PrintUsers(std::cout);
-//
-//
-//	std::cout << '\n';
-//	std::cout << "Watched movies list:" << '\n';
-//	for (const auto movie : user1WatchedMovies) {
-//		movie->Print(std::cout, true, false);
-//		std::cout << '\n';
-//	}
+	std::cout << '\n' << "==================== Etap 3 ====================" << '\n';
+
+	auto user1 = streamingPlatform.AddUser("%U?s*e(r 1", "John", "Smith");
+	CheckAddUser(user1);
+
+	auto user2 = streamingPlatform.AddUser("_U_s_e_r_1", "Jane", "Doe");
+	CheckAddUser(user2);
+
+	auto user3 = streamingPlatform.AddUser("Use^r3", "Aliza", "Forster");
+	CheckAddUser(user3);
+
+	auto user4 = streamingPlatform.AddUser("Us}er4", "Tayler", "Bernard");
+	CheckAddUser(user4);
+
+	auto user5 = streamingPlatform.AddUser("User+5", "Filip", "Finch");
+	CheckAddUser(user5);
+
+
+	user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
+	user1->WatchMovie(*moviesByCategories.at("Comedy")[0]);
+	user1->WatchMovie(*moviesByCategories.at("Drama")[3]);
+	user1->WatchMovie(*moviesByCategories.at("Drama")[2]);
+	user1->WatchMovie(*moviesByCategories.at("Comedy")[3]);
+	user1->WatchMovie(*moviesByCategories.at("Drama")[1]);
+	user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
+	user1->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
+
+
+	std::cout << '\n';
+	std::cout << "All users:" << '\n';
+	streamingPlatform.PrintUsers(std::cout);
+
+	const auto user1WatchedMovies = user1->GetWatchedMovies();
+
+	user1->ClearHistory();
+
+	std::cout << '\n';
+	std::cout << "All users:" << '\n';
+	streamingPlatform.PrintUsers(std::cout);
+
+
+	std::cout << '\n';
+	std::cout << "Watched movies list:" << '\n';
+	for (const auto movie : user1WatchedMovies) {
+		movie->Print(std::cout, true, false);
+		std::cout << '\n';
+	}
 
 
 

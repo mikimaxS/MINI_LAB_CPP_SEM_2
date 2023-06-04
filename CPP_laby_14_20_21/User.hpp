@@ -23,10 +23,10 @@ public:
 	void Print(std::ostream& out, bool printMovies) const;
 
 
-//	// Etap 3
-//	void WatchMovie(const Movie& movie);
-//	std::list<const Movie*> GetWatchedMovies() const;
-//	void ClearHistory();
+	// Etap 3
+	void WatchMovie(const Movie& movie);
+	std::list<const Movie*> GetWatchedMovies() const;
+	void ClearHistory();
 
 
 //	// Etap 4

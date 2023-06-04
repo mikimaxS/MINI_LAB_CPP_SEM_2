@@ -1,5 +1,6 @@
-#include "User.hpp"
+#include <algorithm>
 
+#include "User.hpp"
 #include "Movie.hpp"
 
 
@@ -27,9 +28,27 @@ void User::Print(std::ostream& out, bool printMovies) const {
 
 			movie->Print(out, true, false);
 
-			// Etap 4: Uzupe³nij o wypisywanie oceny filmu
+			// Etap 4: Uzupeï¿½nij o wypisywanie oceny filmu
 
 			out << '\n';
 		}
 	}
+}
+
+void User::WatchMovie(const Movie& movie)
+{
+    this->watchingHistory.push_front(&movie);
+}
+
+void User::ClearHistory()
+{
+    this->watchingHistory.clear();
+}
+
+std::list<const Movie *> User::GetWatchedMovies() const
+{
+    auto list(this->watchingHistory);
+    std::reverse(list.begin(), list.end());
+
+    return list;
 }
