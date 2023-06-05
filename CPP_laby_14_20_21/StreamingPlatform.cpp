@@ -163,8 +163,13 @@ std::list<const Movie *> StreamingPlatform::GetRecommendedMovies(const User& use
              {
                  std::list<const Movie *> intersection;
 
+                 // cration of the lists
                  auto list_1 = user.GetWatchedMovies();
                  auto list_2 = pair_s_u.second.GetWatchedMovies();
+
+                 // sorting the lists
+                 list_1.sort();
+                 list_2.sort();
 
                  std::set_intersection(list_1.begin(), list_1.end(), list_2.begin(), list_2.end(),
                                        std::back_inserter(intersection));
