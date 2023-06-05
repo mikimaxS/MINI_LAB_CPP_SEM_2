@@ -25,4 +25,6 @@ public:
 	void RemoveRating(int rating) const;
 	void UpdateRating(int oldRating, int newRating) const;
 	float GetRating() const;
+
+    friend bool operator< (const Movie& m1, const Movie& m2);
 };

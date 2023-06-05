@@ -1,4 +1,5 @@
 #pragma once
+#include <set>
 
 #include <map>
 #include <list>
@@ -38,5 +39,5 @@ public:
 
 
 //	// Etap 6
-//	std::set<const Movie*> GetWatchedMoviesSet() const;
+	std::set<const Movie*> GetWatchedMoviesSet() const;
 };

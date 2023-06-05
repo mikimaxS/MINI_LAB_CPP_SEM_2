@@ -5,9 +5,7 @@
 
 
 User::User(std::string firstName, std::string lastName) :
-        firstName{firstName}, lastName{lastName}
-{
-}
+        firstName{firstName}, lastName{lastName} {}
 
 std::ostream& operator<<(std::ostream& out, const User& user)
 {
@@ -83,4 +81,16 @@ void User::RateLastMovie(int rating)
             movie->RemoveRating(rating);
         }
     }
+}
+
+std::set<const Movie *> User::GetWatchedMoviesSet() const
+{
+    std::set<const Movie *> s;
+
+    for_each(this->watchingHistory.begin(), this->watchingHistory.end(), [&s](const Movie *m)
+    {
+        s.insert(m);
+    });
+
+    return s;
 }

@@ -73,5 +73,5 @@ public:
 
 
 //	// Etap 6
-//	std::list<const Movie*> GetRecommendedMovies(const User& user, int matchesCount) const;
+	std::list<const Movie*> GetRecommendedMovies(const User& user, int matchesCount) const;
 };

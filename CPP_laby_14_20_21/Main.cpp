@@ -113,161 +113,156 @@ int main()
     }
 
 
+    std::cout << '\n' << "==================== Etap 3 ====================" << '\n';
+
+    auto user1 = streamingPlatform.AddUser("%U?s*e(r 1", "John", "Smith");
+    CheckAddUser(user1);
+
+    auto user2 = streamingPlatform.AddUser("_U_s_e_r_1", "Jane", "Doe");
+    CheckAddUser(user2);
+
+    auto user3 = streamingPlatform.AddUser("Use^r3", "Aliza", "Forster");
+    CheckAddUser(user3);
+
+    auto user4 = streamingPlatform.AddUser("Us}er4", "Tayler", "Bernard");
+    CheckAddUser(user4);
+
+    auto user5 = streamingPlatform.AddUser("User+5", "Filip", "Finch");
+    CheckAddUser(user5);
 
 
-	std::cout << '\n' << "==================== Etap 3 ====================" << '\n';
-
-	auto user1 = streamingPlatform.AddUser("%U?s*e(r 1", "John", "Smith");
-	CheckAddUser(user1);
-
-	auto user2 = streamingPlatform.AddUser("_U_s_e_r_1", "Jane", "Doe");
-	CheckAddUser(user2);
-
-	auto user3 = streamingPlatform.AddUser("Use^r3", "Aliza", "Forster");
-	CheckAddUser(user3);
-
-	auto user4 = streamingPlatform.AddUser("Us}er4", "Tayler", "Bernard");
-	CheckAddUser(user4);
-
-	auto user5 = streamingPlatform.AddUser("User+5", "Filip", "Finch");
-	CheckAddUser(user5);
+    user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
+    user1->WatchMovie(*moviesByCategories.at("Comedy")[0]);
+    user1->WatchMovie(*moviesByCategories.at("Drama")[3]);
+    user1->WatchMovie(*moviesByCategories.at("Drama")[2]);
+    user1->WatchMovie(*moviesByCategories.at("Comedy")[3]);
+    user1->WatchMovie(*moviesByCategories.at("Drama")[1]);
+    user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
+    user1->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
 
 
-	user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
-	user1->WatchMovie(*moviesByCategories.at("Comedy")[0]);
-	user1->WatchMovie(*moviesByCategories.at("Drama")[3]);
-	user1->WatchMovie(*moviesByCategories.at("Drama")[2]);
-	user1->WatchMovie(*moviesByCategories.at("Comedy")[3]);
-	user1->WatchMovie(*moviesByCategories.at("Drama")[1]);
-	user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
-	user1->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
+    std::cout << '\n';
+    std::cout << "All users:" << '\n';
+    streamingPlatform.PrintUsers(std::cout);
+
+    const auto user1WatchedMovies = user1->GetWatchedMovies();
+
+    user1->ClearHistory();
+
+    std::cout << '\n';
+    std::cout << "All users:" << '\n';
+    streamingPlatform.PrintUsers(std::cout);
 
 
-	std::cout << '\n';
-	std::cout << "All users:" << '\n';
-	streamingPlatform.PrintUsers(std::cout);
-
-	const auto user1WatchedMovies = user1->GetWatchedMovies();
-
-	user1->ClearHistory();
-
-	std::cout << '\n';
-	std::cout << "All users:" << '\n';
-	streamingPlatform.PrintUsers(std::cout);
+    std::cout << '\n';
+    std::cout << "Watched movies list:" << '\n';
+    for (const auto movie: user1WatchedMovies)
+    {
+        movie->Print(std::cout, true, false);
+        std::cout << '\n';
+    }
 
 
-	std::cout << '\n';
-	std::cout << "Watched movies list:" << '\n';
-	for (const auto movie : user1WatchedMovies) {
-		movie->Print(std::cout, true, false);
-		std::cout << '\n';
-	}
+    std::cout << '\n' << "==================== Etap 4 ====================" << '\n';
+
+    user3->RateLastMovie(5);
+    user4->RateLastMovie(-1);
 
 
+    user5->WatchMovie(*moviesByCategories.at("Drama")[0]);
+    user5->RateLastMovie(3);
+
+    user5->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
+    user5->RateLastMovie(-1);
+
+    user5->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
+    user5->RateLastMovie(4);
+
+    user5->WatchMovie(*moviesByCategories.at("Drama")[0]);
+    user5->RateLastMovie(-1);
+
+    user5->WatchMovie(*moviesByCategories.at("Comedy")[1]);
+    user5->RateLastMovie(5);
+
+    user5->WatchMovie(*moviesByCategories.at("Comedy")[3]);
 
 
-	std::cout << '\n' << "==================== Etap 4 ====================" << '\n';
+    user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[3]);
 
-	user3->RateLastMovie(5);
-	user4->RateLastMovie(-1);
+    user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
+    user1->RateLastMovie(4);
 
+    user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
+    user1->RateLastMovie(3);
 
-	user5->WatchMovie(*moviesByCategories.at("Drama")[0]);
-	user5->RateLastMovie(3);
+    user1->WatchMovie(*moviesByCategories.at("Fantasy")[2]);
+    user1->RateLastMovie(2);
 
-	user5->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
-	user5->RateLastMovie(-1);
+    user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
+    user1->RateLastMovie(4);
 
-	user5->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
-	user5->RateLastMovie(4);
+    user1->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
+    user1->RateLastMovie(1);
 
-	user5->WatchMovie(*moviesByCategories.at("Drama")[0]);
-	user5->RateLastMovie(-1);
+    user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[3]);
+    user1->RateLastMovie(5);
 
-	user5->WatchMovie(*moviesByCategories.at("Comedy")[1]);
-	user5->RateLastMovie(5);
-
-	user5->WatchMovie(*moviesByCategories.at("Comedy")[3]);
-
-
-	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[3]);
-
-	user1->WatchMovie(*moviesByCategories.at("Drama")[0]);
-	user1->RateLastMovie(4);
-
-	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
-	user1->RateLastMovie(3);
-
-	user1->WatchMovie(*moviesByCategories.at("Fantasy")[2]);
-	user1->RateLastMovie(2);
-
-	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
-	user1->RateLastMovie(4);
-
-	user1->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
-	user1->RateLastMovie(1);
-
-	user1->WatchMovie(*moviesByCategories.at("Sci-Fi")[3]);
-	user1->RateLastMovie(5);
-
-	user1->WatchMovie(*moviesByCategories.at("Comedy")[1]);
-	user1->RateLastMovie(5);
+    user1->WatchMovie(*moviesByCategories.at("Comedy")[1]);
+    user1->RateLastMovie(5);
 
 
-	user3->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
-	user3->RateLastMovie(4);
+    user3->WatchMovie(*moviesByCategories.at("Sci-Fi")[2]);
+    user3->RateLastMovie(4);
 
-	user3->WatchMovie(*moviesByCategories.at("Fantasy")[3]);
-	user3->WatchMovie(*moviesByCategories.at("Comedy")[1]);
-	user3->RateLastMovie(3);
+    user3->WatchMovie(*moviesByCategories.at("Fantasy")[3]);
+    user3->WatchMovie(*moviesByCategories.at("Comedy")[1]);
+    user3->RateLastMovie(3);
 
-	user3->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
-	user3->RateLastMovie(4);
+    user3->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
+    user3->RateLastMovie(4);
 
-	user3->WatchMovie(*moviesByCategories.at("Fantasy")[2]);
+    user3->WatchMovie(*moviesByCategories.at("Fantasy")[2]);
 
-	user3->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
-	user3->RateLastMovie(3);
+    user3->WatchMovie(*moviesByCategories.at("Fantasy")[0]);
+    user3->RateLastMovie(3);
 
-	user3->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
-
-
-	std::cout << '\n';
-	std::cout << "All users:" << '\n';
-	streamingPlatform.PrintUsers(std::cout);
-
-	std::cout << '\n';
-	std::cout << "All movies:" << '\n';
-	streamingPlatform.PrintMovies(std::cout);
+    user3->WatchMovie(*moviesByCategories.at("Fantasy")[1]);
 
 
+    std::cout << '\n';
+    std::cout << "All users:" << '\n';
+    streamingPlatform.PrintUsers(std::cout);
+
+    std::cout << '\n';
+    std::cout << "All movies:" << '\n';
+    streamingPlatform.PrintMovies(std::cout);
 
 
-//	std::cout << '\n' << "==================== Etap 5 ====================" << '\n';
-//
-//	const auto PrintRecommendedMovies = [](const User* user, const std::list<const Movie*>& movies) {
-//		std::cout << '\n';
-//		std::cout << "Movies recommended for ";
-//		user->Print(std::cout, false);
-//		std::cout << ":" << '\n';
-//		for (const auto movie : movies) {
-//			std::cout << *movie << '\n';
-//		}
-//	};
-//
-//	const auto recommendedMovies1 = streamingPlatform.GetRecommendedMovies(*user1, 2);
-//	PrintRecommendedMovies(user1, recommendedMovies1);
-//
-//	const auto recommendedMovies3 = streamingPlatform.GetRecommendedMovies(*user3, 4);
-//	PrintRecommendedMovies(user3, recommendedMovies3);
-//
-// 	const auto recommendedMovies4 = streamingPlatform.GetRecommendedMovies(*user4, 0);
-//	PrintRecommendedMovies(user4, recommendedMovies4);
-//	
-//	const auto recommendedMovies5 = streamingPlatform.GetRecommendedMovies(*user5, 4);
-//	PrintRecommendedMovies(user5, recommendedMovies5);
+    std::cout << '\n' << "==================== Etap 5 ====================" << '\n';
 
+    const auto PrintRecommendedMovies = [](const User *user, const std::list<const Movie *>& movies)
+    {
+        std::cout << '\n';
+        std::cout << "Movies recommended for ";
+        user->Print(std::cout, false);
+        std::cout << ":" << '\n';
+        for (const auto movie: movies)
+        {
+            std::cout << *movie << '\n';
+        }
+    };
 
+    const auto recommendedMovies1 = streamingPlatform.GetRecommendedMovies(*user1, 2);
+    PrintRecommendedMovies(user1, recommendedMovies1);
+
+    const auto recommendedMovies3 = streamingPlatform.GetRecommendedMovies(*user3, 4);
+    PrintRecommendedMovies(user3, recommendedMovies3);
+
+    const auto recommendedMovies4 = streamingPlatform.GetRecommendedMovies(*user4, 0);
+    PrintRecommendedMovies(user4, recommendedMovies4);
+
+    const auto recommendedMovies5 = streamingPlatform.GetRecommendedMovies(*user5, 4);
+    PrintRecommendedMovies(user5, recommendedMovies5);
 
 
     return 0;
