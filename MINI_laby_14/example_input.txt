@@ -1,0 +1,7 @@
+3
+1 Course1
+2 Course2
+5 Course3
+2
+11 Student1 1 1
+12 Student2 3 2 5 1

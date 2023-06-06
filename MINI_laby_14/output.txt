@@ -1,0 +1,53 @@
+******************** PART 1 ********************
+
+4: John - courses(2): Calculus Algebra
+2: Alice - courses(3): Programming Algebra Networking
+1: Ben - courses(1): Algebra
+3: Emma - courses(5): Calculus Algebra Programming Networking Unknown
+
+4: John - courses(2): Calculus Algebra
+2: Alice - courses(3): Programming Algebra Networking
+1: Ben - courses(1): Algebra
+3: Emma - courses(5): Calculus Algebra Programming Networking Databases
+10: Jacob - courses(1): Databases
+
+******************** PART 2 ********************
+
+Sorted by student ID (ascending)
+1: Ben - courses(1): Algebra
+2: Alice - courses(3): Programming Algebra Networking
+3: Emma - courses(5): Calculus Algebra Programming Networking Databases
+4: John - courses(2): Calculus Algebra
+10: Jacob - courses(1): Databases
+
+Sorted by student name (ascending)
+2: Alice - courses(3): Programming Algebra Networking
+1: Ben - courses(1): Algebra
+3: Emma - courses(5): Calculus Algebra Programming Networking Databases
+10: Jacob - courses(1): Databases
+4: John - courses(2): Calculus Algebra
+
+Sorted by course count (descending)
+3: Emma - courses(5): Calculus Algebra Programming Networking Databases
+2: Alice - courses(3): Programming Algebra Networking
+4: John - courses(2): Calculus Algebra
+1: Ben - courses(1): Algebra
+10: Jacob - courses(1): Databases
+
+******************** PART 3 ********************
+
+Saving to my_output.txt
+11: Student1 - courses(1): Course1
+12: Student2 - courses(3): Course2 Course3 Course1
+
+******************** PART 4 ********************
+
+Course with most students: Algebra
+
+3: Emma - courses(5): Calculus Algebra Programming Networking Databases
+2: Alice - courses(4): Programming Algebra Networking Calculus
+4: John - courses(2): Calculus Algebra
+1: Ben - courses(2): Algebra Calculus
+10: Jacob - courses(3): Databases Programming Calculus
+
+Course with most students: Calculus
